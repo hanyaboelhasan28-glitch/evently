@@ -26,4 +26,19 @@ class AppStrings {
   static const String loginWithGoogle = 'Login with Google';
   static const String registerTitle = 'Register';
   static const String alreadyHaveAccount = 'Already have an account ? ';
+
+  // Add Event Strings
+  static const String createEvent = 'Create Event';
+  static const String eventTitle = 'Title';
+  static const String eventDescription = 'Description';
+  static const String eventDate = 'Event Date';
+  static const String eventTime = 'Event Time';
+  static const String chooseDate = 'Choose Date';
+  static const String chooseTime = 'Choose Time';
+  static const String addEvent = 'Add Event';
+
+  // Event Details Strings
+  static const String eventDetails = 'Event Details';
+  static const String editEvent = 'Edit Event';
+  static const String updateEvent = 'Update Event';
 }

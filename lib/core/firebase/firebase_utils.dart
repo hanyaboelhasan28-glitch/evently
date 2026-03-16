@@ -38,6 +38,14 @@ class FirebaseUtils {
     return docRef.set(event);
   }
 
+  static Future<void> updateEventInFirestore(Event event) {
+    return getEventsCollection().doc(event.id).set(event);
+  }
+
+  static Future<void> deleteEventFromFirestore(String eventId) {
+    return getEventsCollection().doc(eventId).delete();
+  }
+
   static Stream<QuerySnapshot<Event>> getEventsStream(String category) {
     if (category == 'All') {
       return getEventsCollection().orderBy('dateTime').snapshots();

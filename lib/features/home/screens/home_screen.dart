@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../../core/assets/app_images.dart';
 import '../../../core/theme/app_colors.dart';
+import 'create_event_screen.dart';
 import 'tabs/favorite_tab.dart';
 import 'tabs/home_tab.dart';
+import 'tabs/profile_tab.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'home';
@@ -18,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _tabs = [
     const HomeTab(),
     const FavoriteTab(),
-    const Center(child: Text('Profile Content')),
+    const ProfileTab(),
   ];
 
   @override
@@ -53,13 +55,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: AppColors.primary,
-        shape: const CircleBorder(side: BorderSide(color: AppColors.white, width: 4)),
-        child: const Icon(Icons.add, color: AppColors.white, size: 30),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: currentIndex == 0 // يظهر فقط في التابة الأولى (Home) حسب التصميم غالباً
+          ? FloatingActionButton(
+              onPressed: () {
+                Navigator.pushNamed(context, CreateEventScreen.routeName);
+              },
+              backgroundColor: AppColors.primary,
+              shape: const CircleBorder(
+                  side: BorderSide(color: AppColors.white, width: 4)),
+              child: const Icon(Icons.add, color: AppColors.white, size: 30),
+            )
+          : null,
     );
   }
 }

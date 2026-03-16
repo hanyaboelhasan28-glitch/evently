@@ -39,7 +39,8 @@ class _HomeTabState extends State<HomeTab> {
                 if (snapshot.hasError) {
                   return const Center(child: Text('Something went wrong'));
                 }
-                var events = snapshot.data?.docs.map((doc) => doc.data()).toList() ?? [];
+                var events =
+                    snapshot.data?.docs.map((doc) => doc.data()).toList() ?? [];
                 if (events.isEmpty) {
                   return const Center(child: Text('No Events Found'));
                 }
@@ -54,6 +55,7 @@ class _HomeTabState extends State<HomeTab> {
                       date: _formatDate(events[index].dateTime),
                       imagePath: _getCategoryImage(events[index].category),
                       isFavorite: events[index].isFavorite,
+                      event: events[index],
                     );
                   },
                 );
@@ -66,16 +68,33 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   String _formatDate(DateTime dateTime) {
-    List<String> months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    List<String> months = [
+      'Jan',
+      'Feb',
+      'Mar',
+      'Apr',
+      'May',
+      'Jun',
+      'Jul',
+      'Aug',
+      'Sep',
+      'Oct',
+      'Nov',
+      'Dec'
+    ];
     return '${dateTime.day} ${months[dateTime.month - 1]}';
   }
 
   String _getCategoryImage(String category) {
     switch (category) {
-      case 'Sport': return 'assets/logo/Sport.png';
-      case 'Birthday': return 'assets/logo/Birthday.png';
-      case 'Meeting': return 'assets/logo/Meeting.png';
-      default: return 'assets/logo/Exhibition.png';
+      case 'Sport':
+        return 'assets/logo/Sport.png';
+      case 'Birthday':
+        return 'assets/logo/Birthday.png';
+      case 'Meeting':
+        return 'assets/logo/Meeting.png';
+      default:
+        return 'assets/logo/Exhibition.png';
     }
   }
 }

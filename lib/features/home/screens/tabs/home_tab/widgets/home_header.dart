@@ -16,7 +16,7 @@ class HomeHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 50, left: 16, right: 16, bottom: 16),
+      padding: const EdgeInsets.only(top: 20, left: 16, right: 16, bottom: 25),
       decoration: const BoxDecoration(
         color: AppColors.primary,
         borderRadius: BorderRadius.only(
@@ -24,75 +24,73 @@ class HomeHeader extends StatelessWidget {
           bottomRight: Radius.circular(32),
         ),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Welcome Back \u2728',
-                      style: TextStyle(color: Colors.white, fontSize: 14)),
-                  Text('John Safwat',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                          fontWeight: FontWeight.bold)),
-                ],
-              ),
-              Row(
-                children: [
-                  const Icon(Icons.wb_sunny_outlined, color: Colors.white),
-                  const SizedBox(width: 12),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: const Text('EN',
-                        style: TextStyle(
-                            color: AppColors.primary, fontWeight: FontWeight.bold)),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          const SizedBox(height: 20),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
+      child: SafeArea(
+        bottom: false,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CategoryItem(
-                  title: 'All',
-                  iconPath: AppImages.elementIcon,
-                  isSelected: selectedCategory == 'All',
-                  onTap: () => onCategoryChanged('All'),
+                const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Welcome Back \u2728',
+                        style: TextStyle(color: Colors.white, fontSize: 14)),
+                    Text('John Safwat',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold)),
+                  ],
                 ),
-                CategoryItem(
-                  title: 'Sport',
-                  iconPath: AppImages.sport,
-                  isSelected: selectedCategory == 'Sport',
-                  onTap: () => onCategoryChanged('Sport'),
-                ),
-                CategoryItem(
-                  title: 'Birthday',
-                  iconPath: AppImages.birthday,
-                  isSelected: selectedCategory == 'Birthday',
-                  onTap: () => onCategoryChanged('Birthday'),
-                ),
-                CategoryItem(
-                  title: 'Meeting',
-                  iconPath: AppImages.meeting,
-                  isSelected: selectedCategory == 'Meeting',
-                  onTap: () => onCategoryChanged('Meeting'),
+                Row(
+                  children: [
+                    const Icon(Icons.wb_sunny_outlined, color: Colors.white),
+                    const SizedBox(width: 12),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: const Text('EN',
+                          style: TextStyle(
+                              color: AppColors.primary, fontWeight: FontWeight.bold)),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ),
-        ],
+            const SizedBox(height: 16),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              clipBehavior: Clip.none,
+              child: Row(
+                children: [
+                  CategoryItem(
+                    title: 'All',
+                    iconPath: AppImages.elementIcon,
+                    isSelected: selectedCategory == 'All',
+                    onTap: () => onCategoryChanged('All'),
+                  ),
+                  CategoryItem(
+                    title: 'Sport',
+                    iconPath: AppImages.sportIcon,
+                    isSelected: selectedCategory == 'Sport',
+                    onTap: () => onCategoryChanged('Sport'),
+                  ),
+                  CategoryItem(
+                    title: 'Birthday',
+                    iconPath: AppImages.birthdayCakeIcon,
+                    isSelected: selectedCategory == 'Birthday',
+                    onTap: () => onCategoryChanged('Birthday'),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

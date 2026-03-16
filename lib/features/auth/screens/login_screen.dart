@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
         if (mounted) {
           Navigator.pushReplacementNamed(context, HomeScreen.routeName);
         }
-      } on FirebaseAuthException catch (e) {
+      } on FirebaseAuthException catch (_) {
         String message = 'Invalid email or password';
         if (mounted) {
           ScaffoldMessenger.of(context).showSnackBar(
